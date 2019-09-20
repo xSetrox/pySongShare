@@ -1,4 +1,5 @@
 # pySongShare
+## Alert: This code is a bit unstable. Random crashes have occurred. Please submit issues.
 Automatically send tweets on what songs you like on Spotify!
 
 # Requirements
