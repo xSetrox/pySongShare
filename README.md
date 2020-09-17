@@ -1,6 +1,7 @@
 # pySongShare
-![pysongshare](https://i.imgur.com/T1ckd4x.png)
+<a href="url"><img src="https://i.imgur.com/T1ckd4x.png" align="left" height="200" width="200" ></a>
 Automatically send tweets on what songs you like on Spotify!
+
 
 # Requirements
 Simply run `pip install -r requirements.txt` to satisfy all requirements. Or install manually with `pip install package`:
