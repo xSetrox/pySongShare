@@ -3,28 +3,25 @@ import os
 import spotipy.util as util
 import time
 import tweepy
+import configparser
 
-# enter your name here to customize. your "username" MUST be your spotify username!
-yourname = "John"
-username = "john.cena"
+# ----------
+# you shouldnt be touching this file unless you're purposefully changing how pysongshare works
+# everything config-related goes into config.ini
+# ----------
 
-# ************ Twitter API keys go here ************
-consumer_key = ''
-consumer_secret = ''
-access_token = ''
-access_token_secret = ''
-# ************************************************
+cparser = configparser.ConfigParser()
+cparser.read('config.ini')
+yourname = cparser['config']['yourname']
+username = cparser['config']['username']
+consumer_key = cparser['config']['consumer_key']
+consumer_secret = cparser['config']['consumer_secret']
+access_token = cparser['config']['access_token']
+access_token_secret = cparser['config']['access_token_secret']
+os.environ["SPOTIPY_CLIENT_ID"] = cparser['config']['spotipy_client_id']
+os.environ["SPOTIPY_CLIENT_SECRET"] = cparser['config']['spotipy_client_secret']
+os.environ["SPOTIPY_REDIRECT_URI"] = cparser['config']['spotipy_redirect_uri']
 
-# ************ enter your spotify api keys here ************
-os.environ["SPOTIPY_CLIENT_ID"] = ''
-os.environ["SPOTIPY_CLIENT_SECRET"] = ''
-# make sure the redirect url here matches the one you set on the Spotify dev website. it doesnt matter what you choose.
-# it can be a website you dont own or lead to a non-existent one.
-os.environ["SPOTIPY_REDIRECT_URI"] = 'http://localhost:8888'
-# ************************************************
-
-# leave everything below this line alone
-# ***************************************************************************************************************
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 twitter = tweepy.API(auth)
@@ -35,7 +32,6 @@ def isinfile(file, query):
     if query in file:
         return True
     return False
-
 
 if token:
     sp = spotipy.Spotify(auth=token)
@@ -50,13 +46,12 @@ if token:
             prevfile = open("prevlikes.txt", "r+")
             if not isinfile(prevfile, item['id']):
                 prevfile.write("\n" + item['id'])
-                print(
-                    yourname + " just liked " + trackname + " by " + artists + " on Spotify:\n" + item['external_urls']['spotify'])
-                twitter.update_status(
-                    yourname + " just liked " + trackname + " by " + artists + " on Spotify:\n" + item['external_urls']['spotify'])
+                print(f'{yourname} just liked {trackname} by {artists} on Spotify:\n' + item['external_urls']['spotify'])
+                twitter.update_status(f'{yourname} just liked {trackname} by {artists} on Spotify:\n' + item['external_urls']['spotify'])
             oldvar = item
             prevfile.close()
         time.sleep(10)
 
 else:
     print("Can't get token for", username)
+    exit()
