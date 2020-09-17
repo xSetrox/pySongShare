@@ -19,10 +19,10 @@ You must click create the "access token and access token secret" parts.
 Now fill out these parts of the config.ini with the info you see.
 
 ```
-consumer_key = ''
-consumer_secret = ''
-access_token = ''
-access_token_secret = ''
+consumer_key = 
+consumer_secret = 
+access_token = 
+access_token_secret = 
 ```
 
 ### Spotify
@@ -41,7 +41,7 @@ Edit settings on your app (or if you're still making it, scroll down to redirect
 filled in in the config.ini:
 
 ```
-SPOTIPY_REDIRECT_URI = 'http://localhost:8888'
+SPOTIPY_REDIRECT_URI = http://localhost:8888
 ```
 
 ## The token
