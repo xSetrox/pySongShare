@@ -1,5 +1,5 @@
 # pySongShare
-### Alert: This code is a bit unstable. Random program crashes have occurred. Please submit issues.
+![pysongshare](https://i.imgur.com/T1ckd4x.png)
 Automatically send tweets on what songs you like on Spotify!
 
 # Requirements
