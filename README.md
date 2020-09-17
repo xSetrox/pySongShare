@@ -10,13 +10,13 @@ tweepy==3.8.0
 spotipy==2.4.4
 ```
 # Setup
-The variables for setup are defined in source code! Which is ugly. I'll add a better way to store these I promise.
+To set up, you need to fill out the config.ini. As you follow this guide, fill it out.
 You will need API keys for Spotify and Twitter, therefore you will need to create a developer profile on both.
 ### Twitter
 Go to https://developer.twitter.com , do their very tedious setup, and make an app. What you need will be in the keys and 
 tokens tab of your app. 
 You must click create the "access token and access token secret" parts.
-Fill lines `12-15` with Twitter API keys. 
+Now fill out these parts of the config.ini with the info you see.
 
 ```
 consumer_key = ''
@@ -24,22 +24,24 @@ consumer_secret = ''
 access_token = ''
 access_token_secret = ''
 ```
+
 ### Spotify
-Go to https://developer.spotify.com , sign up, and create an app. Get the client id and secret and fill them in in
-lines 19 and 20:
+Go to https://developer.spotify.com , sign up, and create an app. Get the client id and secret.
+Now fill out these parts of the config.ini with the info you see.
+
 ```
-os.environ["SPOTIPY_CLIENT_ID"] = ''
-os.environ["SPOTIPY_CLIENT_SECRET"] = ''
+SPOTIPY_CLIENT_ID = 
+SPOTIPY_CLIENT_SECRET = 
 ```
+
 Now the important part: The redirect URL. This is very important, but it can be literally anything. Doesn't need to be a working
 webpage.
 You don't need to edit the code for this part unless you'd like to change it from http://localhost:8888.
 Edit settings on your app (or if you're still making it, scroll down to redirect url) and set this to match whatever URL you
-filled in in line 23 of your code:
+filled in in the config.ini:
+
 ```
-# make sure the redirect url here matches the one you set on the Spotify dev website. it doesnt matter what you choose.
-# it can be a website you dont own or lead to a non-existent one.
-os.environ["SPOTIPY_REDIRECT_URI"] = 'http://localhost:8888'`
+SPOTIPY_REDIRECT_URI = 'http://localhost:8888'
 ```
 
 ## The token
